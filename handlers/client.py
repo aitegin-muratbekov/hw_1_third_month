@@ -1,7 +1,7 @@
 from aiogram import types, Dispatcher
 from aiogram.types import ParseMode, InlineKeyboardMarkup, InlineKeyboardButton
 from config import dp, bot
-
+from database.bot_db import sql_command_random
 from random import choice
 
 async def mem(message: types.Message):
@@ -34,7 +34,11 @@ async def pin(message: types.Message):
     else:
         await bot.pin_chat_message(message.chat.id, message.message_id)
 
+async def show_random(message: types.Message):
+    await sql_command_random(message)
+
 def register_handlers_client(dp:Dispatcher):
     dp.register_message_handler(mem, commands=['mem'])
     dp.register_message_handler(quiz_1, commands=['quiz'])
     dp.register_message_handler(pin, commands=['pin'], commands_prefix='!')
+    dp.register_message_handler(show_random, commands=['get'])
