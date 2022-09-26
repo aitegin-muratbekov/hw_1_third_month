@@ -3,6 +3,7 @@ import aioschedule
 from aiogram import types, Dispatcher
 from config import bot
 
+
 async def get_chat_id(message: types.Message):
     global chat_id
     chat_id = message.from_user.id
@@ -14,7 +15,7 @@ async def go_to_geektech():
 
 
 async def scheduler():
-    aioschedule.every().monday.at('14:45').do(go_to_geektech)
+    aioschedule.every().monday.at('14:55').do(go_to_geektech)
 
     while True:
         await aioschedule.run_pending()
