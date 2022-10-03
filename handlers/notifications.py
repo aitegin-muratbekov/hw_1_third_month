@@ -15,7 +15,7 @@ async def go_to_geektech():
 
 
 async def scheduler():
-    aioschedule.every().monday.at('14:55').do(go_to_geektech)
+    aioschedule.every().monday.at("14:55").do(go_to_geektech)
 
     while True:
         await aioschedule.run_pending()
@@ -23,5 +23,4 @@ async def scheduler():
 
 
 def register_handlers_notification(dp: Dispatcher):
-    dp.register_message_handler(get_chat_id,
-                                lambda word: 'напомни' in word.text)
+    dp.register_message_handler(get_chat_id, lambda word: "напомни" in word.text)
